@@ -1,0 +1,107 @@
+<h3 style="border-bottom: 3px solid orangered;    border-bottom: 3px solid orangered;
+    padding-bottom: 12px;"><strong>Log your order</strong></h3>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
+  natoque </p>
+
+<form ng-submit="$ctrl.createOrder($ctrl.newOrder, $ctrl.orderMenuItems)"
+      ng-if="$ctrl.restaurants || $ctrl.restaurants.length === 0">
+  <div class="form-group">
+    Order Title
+    <input class="form-control" ng-model="$ctrl.newOrder.title" type="text">
+  </div>
+  <div class="form-group">
+    Restaurant
+    <input ng-change="$ctrl.clearMenuItems()" type="text" ng-model="$ctrl.restaurant"
+           typeahead-on-select="$ctrl.getItemsForRestaurant($item)"
+           uib-typeahead="restaurant as restaurant.name for restaurant in $ctrl.restaurants | filter:$viewValue | limitTo:8"
+           class="form-control" ng-blur="$ctrl.isThisAKnownRestaurant($ctrl.restaurant)">
+  </div>
+
+
+  <div ng-if="$ctrl.showNewRestaurant === true"
+       ng-hide="$ctrl.restaurantMenuItems.length > 0 || $ctrl.restaurant === null" class="well">
+    <p>Hey! We don't know the restaurant called <strong>{{$ctrl.restaurant}}</strong></p>
+    <p><small>Where is this restaurant located?</small></p>
+    <div class="form-group">
+      <input class="form-control"  places-auto-complete style="width: 100%;" size=100
+             ng-model="vm.address"
+             placeholder=""
+             component-restrictions="{country:'dk'}"
+             types="{{$ctrl.types}}"
+             on-place-changed="$ctrl.placeChanged()"/>
+    </div>
+    <p><small>What type of food do you get here?</small></p>
+    <div class="form-group">
+      <input type="text" ng-model="$ctrl.restaurantType"
+             typeahead-on-select=""
+             uib-typeahead="type as type.title for type in $ctrl.allTypes | filter:$viewValue | limitTo:8"
+             class="form-control" ng-blur="">
+    </div>
+    <button class="btn btn-default w-100" ng-show="!$ctrl.isThisAnObject($ctrl.restaurantType)" ng-disabled="!$ctrl.restaurant || !$ctrl.restaurantType || !$ctrl.isPlaceValid()" type="button" ng-click="$ctrl.createNewTypeAndRestaurant($ctrl.restaurant, $ctrl.restaurantType)">Confirm</button>
+    <button class="btn btn-default w-100" ng-show="$ctrl.isThisAnObject($ctrl.restaurantType)" ng-disabled="!$ctrl.restaurant || !$ctrl.restaurantType || !$ctrl.isPlaceValid()" type="button" ng-click="$ctrl.confirmNewRest($ctrl.restaurant, $ctrl.restaurantType.id)">Confirm</button>
+  </div>
+
+  <div class="form-group" ng-if="$ctrl.showNewRestaurant === false">
+    <h4>Menu Items</h4>
+    <small>What did you order from <strong>{{$ctrl.restaurant.name}}</strong>?</small>
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="item in $ctrl.orderMenuItems">
+          <p>Select an item from the list or make a new own</p>
+          <input type="text" ng-model="item.data" typeahead-on-select="$ctrl.isThisAKnownMenuItem(item)"
+                 uib-typeahead="menuItem as menuItem.name for menuItem in $ctrl.restaurantMenuItems | filter:$viewValue | limitTo:8"
+                 class="form-control" ng-blur="$ctrl.isThisAKnownMenuItem(item)">
+          <div ng-if="item.showNewMenuItem === false">
+            <br>
+            <p>Here is what we know about this item</p>
+            <p>
+              <small>Does this seem correct?</small>
+            </p>
+            <ul>
+              <li ng-repeat="(key, value) in item.data"
+                  ng-if="key === 'name' || key === 'type' || key === 'price' || key === 'image'">
+                {{key}}:{{value}}
+              </li>
+            </ul>
+          </div>
+          <div ng-if="item.showNewMenuItem === true" ng-init="item.name = item.data">
+            <br>
+            <p>We don't know this item</p>
+            <p>
+              <small>Please fill out this information</small>
+            </p>
+            <div>
+              <div class="form-group">
+                <p>Name</p>
+                <input class="form-control" type="text" ng-model="item.name">
+              </div>
+              <div>
+                <p>Type</p>
+                <div class="form-group">
+                  <input type="text" ng-model="$ctrl.newItemType"
+                         typeahead-on-select="$ctrl.selectedItemType(item, $item)"
+                         uib-typeahead="type as type.title for type in $ctrl.allTypes | filter:$viewValue | limitTo:8"
+                         class="form-control" ng-blur="">
+                </div>
+              </div>
+              <div class="form-group">
+                <p>Price</p>
+                <input class="form-control" type="number" ng-model="item.price">
+              </div>
+            </div>
+
+
+            <button class="btn btn-default w-100" ng-disabled="!item.name || !$ctrl.newItemType || !item.price" ng-show="$ctrl.isThisAnObject($ctrl.newItemType)" type="button" ng-click="$ctrl.confirmNewMenuItem(item)">Confirm</button>
+            <button class="btn btn-default w-100" ng-disabled="!item.name || !$ctrl.newItemType || !item.price" ng-show="!$ctrl.isThisAnObject($ctrl.newItemType)" ng-disabled="" type="button" ng-click="$ctrl.confirmNewTypeAndMenuItem(item, $ctrl.newItemType)">Confirm</button>
+
+
+          </div>
+          <button ng-if="$last && item.showNewMenuItem === false" type="button" class="btn btn-default w-100" ng-click="$ctrl.addNewMenuItem()">Add Item</button>
+        </li>
+      </ul>
+  </div>
+
+  {{$ctrl.errors}}
+
+  <button ng-disabled="!$ctrl.newOrder.title || !$ctrl.restaurant || $ctrl.restaurantMenuItems.length === 0" class="btn btn-success add-btn w-100" type="submit">Log Order</button>
+  <div class="clearfix"></div>
+</form>

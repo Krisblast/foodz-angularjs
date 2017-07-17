@@ -1,0 +1,35 @@
+<div class="header">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">-->
+        <!--<span class="sr-only">Toggle navigation</span>-->
+        <!--<span class="icon-bar"></span>-->
+        <!--<span class="icon-bar"></span>-->
+        <!--<span class="icon-bar"></span>-->
+        <!--</button>-->
+        <a class="navbar-brand" href="/login">FoodSwipe <small ng-if="$root.user" style="color: black">- Hello, {{$root.user.data.email}}</small></a>
+      </div>
+
+      <!--<div class="collapse navbar-collapse" id="js-navbar-collapse">-->
+
+      <!--&lt;!&ndash;<ul class="nav navbar-nav">&ndash;&gt;-->
+      <!--&lt;!&ndash;<li class="active"><a ui-sref="Main">Home</a></li>&ndash;&gt;-->
+      <!--&lt;!&ndash;<li><a ui-sref="About">About</a></li>&ndash;&gt;-->
+      <!--&lt;!&ndash;<li><a ui-sref="Error">404</a></li>&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<li><a ng-href="/">Contact</a></li>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+      <!--</div>-->
+    </div>
+    <div class="container-fluid" style="border-bottom: 1px solid rgba(0, 0, 0, 0.07);border-top: 1px solid rgba(0, 0, 0, 0.07);padding: 4px;">
+      <div>
+        <ul class="nav nav-pills navbar-sub-header" role="tablist" >
+          <li role="presentation" ng-class="{'active': $root.activePage === 'home'}"><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+          <li role="presentation" ng-class="{'active': $root.activePage === 'mood' || $root.activePage === 'picker'}"><a href="/mood"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span></a></li>
+          <li role="presentation" is-authenticated ng-class="{'active': $root.activePage === 'order'}"><a href="/order"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+          <!--<li role="presentation" ng-class="{'active': $root.activePage === 'usual'}"><a href="/usual"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span></a></li>-->
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

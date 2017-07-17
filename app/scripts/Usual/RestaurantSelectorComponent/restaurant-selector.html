@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3 style="border-bottom: 3px solid orangered;    border-bottom: 3px solid orangered;
+    padding-bottom: 12px;"><strong>Select your usuals</strong></h3>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque  </p>
+      <form name="selector" ng-submit="$ctrl.addToUsual($ctrl.selected)">
+        <div class="input-group">
+          <input style="height: 45px;" required type="text" ng-model="$ctrl.selected" uib-typeahead="rest as rest.name for rest in $ctrl.availableRestaurants | filter:$viewValue | limitTo:8" class="form-control">
+          <span class="input-group-btn">
+        <button class="btn btn-success add-btn" type="submit" ng-disabled="$ctrl.isObjSelected($ctrl.selected)" type="button" style="border-radius: 1px;height: 45px;width: 77px">Add</button>
+      </span>
+        </div><!-- /input-group -->
+      </form>
+
+  </div>
+</div>

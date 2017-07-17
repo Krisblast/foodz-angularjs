@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-12">
+    <br>
+    <h3 style="border-bottom: 3px solid orangered;    border-bottom: 3px solid orangered;
+    padding-bottom: 12px;"><strong>Usuals</strong></h3>
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="rest in $ctrl.selectedRestaurants track by $index">
+
+        <div class="row">
+          <div class="col-md-12">
+            <p><strong class="" ng-bind="rest.name"></strong></p>
+            <span uib-rating ng-model="rate" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+          </div>
+
+          <div class="col-md-12">
+            <br>
+            <button class="btn btn-default btn-sm" ng-click="$ctrl.removeRestaurant($index)">X</button>
+          </div>
+        </div>
+
+      </li>
+
+      <div ng-if="$ctrl.selectedRestaurants.length === 0"><small>Don't eat much, huh?</small></div>
+
+    </ul>
+  </div>
+</div>

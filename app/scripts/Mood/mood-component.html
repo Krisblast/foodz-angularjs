@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-12" style="text-align: center;padding-bottom: 90px;">
+
+    <div class="panel">
+      <div class="panel-body" style="padding-top: 0" ng-if="$ctrl.userAddress">
+        <h4>It seems you are located near</h4>
+        <h4 style="color:#ef4229;">{{$ctrl.userAddress.formatted_address}}</h4>
+        <small>We will find suggestions within range of this location</small>
+        <a href="" ng-click="$ctrl.userAddress = false"><small><i>Change location</i></small></a>
+      </div>
+
+      <div class="panel-body" style="padding-top: 0" ng-if="!$ctrl.userAddress">
+        <h4>Where are you located?</h4>
+        <input class="form-control"  places-auto-complete style="width: 100%;" size=100
+               ng-model="$ctrl.newAddress"
+               placeholder=""
+               component-restrictions="{country:'dk'}"
+               types="{{$ctrl.types}}"
+               on-place-changed="$ctrl.placeChanged()"/>
+        <hr>
+      </div>
+    </div>
+    <h4>What are you in the mood for?</h4>
+    <mood-selector></mood-selector>
+    <a href="/picker">
+      <button class="btn btn-default w-100">Continue</button>
+    </a>
+    <wizard count="$ctrl.checkoutItems.length || 0"></wizard>
+  </div>
+</div>
+

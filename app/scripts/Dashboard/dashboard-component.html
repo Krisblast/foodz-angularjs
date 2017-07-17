@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-12" style="text-align: center">
+
+
+
+
+    <div is-authenticated>
+      <h4
+        style="margin-top:0;text-align:left;border-bottom: 3px solid orangered;border-bottom: 3px solid orangered;padding-bottom: 12px;">
+        <strong>Latest Orders</strong></h4>
+      <order-list limit="3" loading="$ctrl.loading" orders="$ctrl.orders"></order-list>
+    </div>
+
+    <small ng-if="!$ctrl.loading" class="pull-right"><a style="color: orangered" href="/orders">See All</a></small>
+    <div class="clearfix"></div>
+    <div class="row" style="margin-bottom: 10px;margin-top: 20px">
+      <div class="col-xs-12">
+        <a href="/mood">
+          <button class="btn btn-success add-btn w-100"><span class="glyphicon glyphicon-cutlery"
+                                                              style="margin-right: 6px" aria-hidden="true"></span> In
+            mood for food
+          </button>
+        </a>
+      </div>
+    </div>
+    <div is-authenticated class="row">
+      <div class="col-xs-12">
+        <a href="/order">
+          <button class="btn btn-info add-btn w-100"><span class="glyphicon glyphicon-shopping-cart"
+                                                           style="margin-right: 6px" aria-hidden="true"></span> Log your
+            order
+          </button>
+        </a>
+      </div>
+    </div>
+    <div is-authenticated class="row" style="margin-bottom: 10px;margin-top: 10px">
+      <div class="col-xs-12">
+        <a href="/usual">
+          <button class="btn btn-info add-btn w-100"><span class="glyphicon glyphicon-cog" style="margin-right: 6px"
+                                                           aria-hidden="true"></span> Select your usuals
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+

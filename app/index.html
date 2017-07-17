@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="fragment" content="!">
+  <base href="/">
+  <title>FoodSwipe</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://use.fontawesome.com/ef6ed03dea.js"></script>
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+</head>
+<body ng-app="foodzApp" style="overflow: hidden">
+
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div ng-if="!$root.globalLoading">
+  <app-header></app-header>
+  <main-app></main-app>
+</div>
+<div ng-if="$root.globalLoading" style="padding: 15px;text-align: center">
+  <br>
+  <br>
+  <br><br><br>
+  <p>Fetching Dat Food</p>
+  <br><br>
+  <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+  <span class="sr-only">Loading...</span>
+</div>
+
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<!--     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>-->
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<script src="bower_components/angular-swing/dist/angular-swing.min.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/angular-underscore/angular-underscore.js"></script>
+<script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt3ke618rd24DZ1MVAlGaHstgyT0egprQ&libraries=places"></script>
+
+
+
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/about.js"></script>
+<script src="scripts/main-app/main-app-component.js"></script>
+<script src="scripts/header/header-app-component.js"></script>
+<script src="scripts/footer/footer-app-component.js"></script>
+<script src="scripts/Dashboard/dashboard-component.js"></script>
+<script src="scripts/Dashboard/components/order-list/order-list.component.js"></script>
+<script src="scripts/Mood/mood-component.js"></script>
+<script src="scripts/Usual/usual-component.js"></script>
+<script src="scripts/Usual/SelectedRestaurantsComponent/selected-restaurants-component.js"></script>
+<script src="scripts/Usual/RestaurantSelectorComponent/restaurant-selector-component.js"></script>
+<script src="scripts/Picker/picker-component.js"></script>
+<script src="scripts/Mood/MoodSelectorComponent/mood-selector-component.js"></script>
+<script src="scripts/WizardComponent/wizard-component.js"></script>
+<script src="scripts/Signup/login.js"></script>
+<script src="scripts/Signup/register.js"></script>
+<script src="scripts/Orders/orders.component.js"></script>
+<script src="scripts/Common/isAuthenticated/is-authenticated.directive.js"></script>
+<script src="scripts/Checkout/checkout.component.js"></script>
+
+<script src="scripts/Resources/auth.api.js"></script>
+<script src="scripts/Resources/order.api.js"></script>
+<script src="scripts/Resources/restaurant.api.js"></script>
+<script src="scripts/Resources/types.api.js"></script>
+<script src="scripts/Resources/menu-items.api.js"></script>
+
+<script src="scripts/Services/auth.service.js"></script>
+<script src="scripts/Services/order.service.js"></script>
+<script src="scripts/Services/restaurant.service.js"></script>
+<script src="scripts/Services/types.service.js"></script>
+<script src="scripts/Services/menu-items.service.js"></script>
+
+<script src="scripts/Order/order.component.js"></script>
+
+
+<!-- endbuild -->
+</body>
+</html>

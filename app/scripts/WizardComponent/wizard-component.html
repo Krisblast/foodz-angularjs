@@ -1,0 +1,11 @@
+<div class="wizard">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <ul class="nav nav-pills navbar-sub-header">
+        <li role="presentation" ng-class="{'active': $root.activePage === 'mood'}"><a href="/mood">Mood</a></li>
+        <li role="presentation" ng-class="{'active': $root.activePage === 'picker'}"><a href="/picker">Picker</a></li>
+        <li role="presentation" ng-class="{'active': $root.activePage === 'home'}"><a href="/checkout">Wishlist <span class="badge">{{$ctrl.count}}</span></a></li>
+      </ul>
+    </div>
+  </div>
+</div>

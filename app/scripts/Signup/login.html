@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+
+    <form ng-submit="loginUser(userCreds)">
+      <div class="col-md-12">
+
+        <div ng-if="!$root.user">
+          <div class="form-group">
+
+            Email
+            <input class="form-control" ng-model="userCreds.email" type="email">
+
+          </div>
+
+          <div class="form-group">
+
+            Password
+            <input class="form-control" ng-model="userCreds.password" type="password">
+
+          </div>
+          <button class="btn btn-primary w-100" type="submit">Login</button>
+          <div style="text-align: center;margin-top: 10px">
+            <small style="font-size: 10px"><a href="/mood">No thanks. I'm just in the mood for food</a></small>
+          </div>
+        </div>
+
+
+        <div ng-if="$root.user" class="well">
+          <h1>Hello {{$root.user.data.name}}, you are logged in!!</h1>
+          <br>
+          <ul class="list-unstyled">
+            <li ng-repeat="(key,value) in $root.user.data"><strong style="text-transform: capitalize">{{key}}</strong> -
+              {{value}}
+            </li>
+          </ul>
+          <br>
+          <button type="button" ng-click="logoutUser()" class="btn btn-danger pull-right">Logout</button>
+          <div class="clearfix"></div>
+        </div>
+
+      </div>
+
+
+    </form>
+
+
+
+
+  </div>
+
+</div>

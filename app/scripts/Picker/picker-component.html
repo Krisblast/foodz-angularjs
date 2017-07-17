@@ -1,0 +1,38 @@
+<div class="row" ng-swipe-left="$ctrl.swipeLeft($ctrl.randomFoodMenu)"
+     ng-swipe-right="$ctrl.swipeRight($ctrl.randomFoodMenu)" ng-if="$ctrl.randomFoodMenu">
+  <div class="swipeLeft" ng-click="$ctrl.swipeLeft($ctrl.randomFoodMenu)"></div>
+  <div class="swipeRight" ng-click="$ctrl.swipeRight($ctrl.randomFoodMenu)"></div>
+  <div style="min-height: 245px;z-index: 1" class="slider-box col-md-12 fadeIn"
+       ng-class="{'goRight': $ctrl.goingRight === true, 'goLeft': $ctrl.goingLeft === true}">
+    <div style="text-align: center">
+      <img
+        style="width: 160px;height: 160px; border: 3px solid rgba(35, 35, 35, 0.62); -webkit-border-radius: 50%;-moz-border-radius: 50%;border-radius: 50%;"
+        ng-src="{{$ctrl.randomFoodMenu.image}}" alt="">
+      <br><br>
+      <strong style="font-size: 18px;">{{$ctrl.randomFoodMenu.name}}</strong> <br>
+      <small>from</small>
+      <br> <a href="">{{$ctrl.randomFoodMenu.restaurant_name}}</a>
+    </div>
+  </div>
+</div>
+
+
+<div style="min-height: 245px;" ng-if="!$ctrl.randomFoodMenu" class="row">
+  <div class="col-md-12" style="text-align: center">
+
+    <h4>We ran out of food suggestions</h4>
+    <br>
+    <a href="/checkout">
+      <button class="btn btn-success add-btn w-100">See your picked item</button>
+    </a>
+    <br><br>
+    <a href="/mood">
+      <button class="btn btn-default w-100">Change mood to get more suggestions</button>
+    </a>
+    <br><br>
+    <button class="btn btn-default w-100" ng-click="$ctrl.restart()">Start Over</button>
+  </div>
+</div>
+
+
+<wizard count="$ctrl.checkoutItems.length"></wizard>
